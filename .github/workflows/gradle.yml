@@ -44,19 +44,6 @@ jobs:
       - name: Run build lifecycle
         run: ./gradlew build checkLicenses test shadowJar genUpdaterInformation --no-daemon --stacktrace
 
-      - name: Publish updater metadata
-        uses: s0/git-publish-subdir-action@develop
-        if: ${{ github.event_name == 'push' && !startsWith(github.ref, 'refs/heads/renovate/') && matrix.java == 17 }}
-        env:
-          REPO: git@github.com:CloudNetService/launchermeta.git
-          BRANCH: ${{ steps.branch-name.outputs.current_branch }}
-          FOLDER: '.launchermeta'
-          SQUASH_HISTORY: true
-          SKIP_EMPTY_COMMITS: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          MESSAGE: 'Update launcher meta for {target-branch} (commit: {sha})'
-
       - name: Set version type in GitHub environment
         if: ${{ matrix.java == 17 }}
         run: |
