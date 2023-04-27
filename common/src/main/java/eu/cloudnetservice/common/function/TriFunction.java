@@ -14,26 +14,17 @@
  * limitations under the License.
  */
 
-package eu.cloudnetservice.driver.network.netty.http;
+package eu.cloudnetservice.common.function;
 
-import eu.cloudnetservice.driver.network.HostAndPort;
-import eu.cloudnetservice.driver.network.http.HttpChannel;
-import io.netty5.channel.Channel;
+import java.util.function.Function;
 import lombok.NonNull;
 
-/**
- * The default implementation of the http channel, delegating all method calls to netty.
- *
- * @since 4.0
- */
-public record NettyHttpChannel(
-  @NonNull Channel channel,
-  @NonNull HostAndPort serverAddress,
-  HostAndPort clientAddress
-) implements HttpChannel {
+@FunctionalInterface
+public interface TriFunction<T, U, V, R> {
 
-  @Override
-  public void close() {
-    this.channel.close();
+  R apply(T t, U u, V v);
+
+  default <K> @NonNull TriFunction<T, U, V, K> andThen(@NonNull Function<? super R, ? extends K> after) {
+    return (T t, U u, V v) -> after.apply(this.apply(t, u, v));
   }
 }

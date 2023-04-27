@@ -61,6 +61,7 @@ import eu.cloudnetservice.node.service.ServiceConfigurationPreparer;
 import eu.cloudnetservice.node.service.ServiceConsoleLogCache;
 import eu.cloudnetservice.node.version.ServiceVersionProvider;
 import java.net.Inet6Address;
+import java.net.StandardProtocolFamily;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -730,6 +731,9 @@ public abstract class AbstractService implements CloudService {
     var listener = listeners.get(ThreadLocalRandom.current().nextInt(listeners.size()));
     // rewrite 0.0.0.0 to 127.0.0.1 (or ::0 to ::1) to prevent unexpected connection issues (wrapper to node connection)
     // if InetAddresses.forString throws an exception that is OK as the connection will fail anyway then
+    if (listener.getProtocolFamily() != StandardProtocolFamily.INET) {
+      return listener;
+    }
     var address = InetAddresses.forString(listener.host());
     if (address.isAnyLocalAddress()) {
       // rewrites ipv6 to an ipv6 local address
