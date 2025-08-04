@@ -16,9 +16,12 @@
 
 package eu.cloudnetservice.ext.component;
 
-import dev.derklaro.aerogel.Element;
-import dev.derklaro.aerogel.util.Qualifiers;
+import dev.derklaro.aerogel.binding.key.BindingKey;
 import eu.cloudnetservice.driver.inject.InjectionLayer;
+import io.leangen.geantyref.AnnotationFormatException;
+import io.leangen.geantyref.TypeFactory;
+import jakarta.inject.Named;
+import java.util.Collections;
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.flattener.ComponentFlattener;
@@ -59,10 +62,19 @@ public final class ComponentFormats {
   public static final PlaceholderComponentFormat<String> PLAIN = new StripColorComponentFormat(LEGACY_HEX);
   static final PlaceholderComponentFormat<String> MINIMESSAGE = new MinimessageComponentFormat();
   public static final PlaceholderComponentFormat<String> USER_INPUT = new ConditionalComponentFormat(
-    () -> InjectionLayer.ext().instance(
-      Element.forType(boolean.class)
-        .requireAnnotation(Qualifiers.named("minimessage"))
-    ),
+    () -> {
+      // Qualifiers.named got removed, maybe another way then this?
+      try {
+        return InjectionLayer.ext().instance(
+          BindingKey.of(boolean.class)
+            .withQualifier(
+              TypeFactory.annotation(Named.class, Collections.singletonMap("value", "minimessage"))
+            )
+        );
+      } catch (AnnotationFormatException ex) {
+        throw new RuntimeException(ex);
+      }
+    },
     LEGACY_HEX_AMPERSAND_PRECISE,
     MINIMESSAGE
   );

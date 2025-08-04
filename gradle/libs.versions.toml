@@ -1,82 +1,86 @@
 [versions]
 
 # plugins
-shadow = "8.1.1"
+shadow = "8.3.8"
 juppiter = "0.4.0"
-spotless = "6.25.0"
-fabricLoom = "1.6.11"
-nexusPublish = "2.0.0-rc-2"
-checkstyleTools = "10.17.0"
+spotless = "7.2.1"
+fabricLoom = "1.11.4"
+nexusPublish = "2.0.0"
+checkstyleTools = "10.26.1"
 
 # google libs
-gson = "2.11.0"
-guava = "33.2.0-jre"
+gson = "2.13.1"
+guava = "33.4.8-jre"
 
 # testing
-junit = "5.10.2"
-mockito = "5.12.0"
-junitLauncher = "1.10.2"
-testcontainers = "1.19.7"
+junit = "5.13.4"
+mockito = "5.18.0"
+junitLauncher = "1.13.4"
+testcontainers = "1.21.3"
 
 # compile time processing
-lombok = "1.18.30"
+lombok = "1.18.38"
 javapoet = "1.13.0"
 
 # console
-jansi = "2.4.1"
-jline = "3.26.1"
-cloud = "1.9.0-cn1"
+jline = "3.30.4"
+cloud = "2.0.0-cn1"
+cloudApi = "2.0.0"
+cloudConfirmation = "1.0.0-rc.1"
 stringSimilarity = "2.0.0"
 
 # databases
 h2 = "1.4.197" # do not update, leads to database incompatibility
 xodus = "2.0.1"
-mongodb = "5.1.0"
-hikariCp = "5.1.0"
-mysqlConnector = "8.4.0"
+mongodb = "5.5.1"
+hikariCp = "6.3.2"
+mysqlConnector = "9.4.0"
 
 # general
-asm = "9.7"
-oshi = "6.6.0"
-vavr = "0.10.4"
-sshj = "0.38.0"
-slf4j = "2.0.12"
-aerogel = "2.1.0"
-awsSdk = "2.25.3"
-unirest = "4.4.0"
-caffeine = "3.1.8"
-reflexion = "1.8.0"
-geantyref = "1.3.15"
-dockerJava = "3.3.6"
-nightConfig = "3.7.1"
-annotations = "24.1.0"
-influxClient = "7.1.0"
-netty = "5.0.0.Alpha5"
+oshi = "6.8.2"
+vavr = "0.10.7"
+sshj = "0.40.0"
+aerogel = "3.0.1"
+awsSdk = "2.32.13"
+unirest = "4.5.0"
+caffeine = "3.2.2"
+reflexion = "2.0.0"
+geantyref = "2.0.1"
+dockerJava = "3.5.3"
+nightConfig = "3.8.2"
+annotations = "26.0.2"
+influxClient = "7.3.0"
+netty = "5.0.0.Alpha6-SNAPSHOT"
 gulf = "1.0.0-SNAPSHOT"
+
+# logging
+slf4j = "2.0.17"
+logback = "1.5.18"
 
 # platform api versions
 sponge = "9.0.0"
-velocity = "3.1.1"
+velocity = "3.4.0-SNAPSHOT"
 waterdogpe = "1.2.4"
 nukkitX = "1.0-SNAPSHOT"
-minestom = "2cdb3911b0"
+minestom = "2025.07.30-1.21.8"
+minestomExtensions = "1.2.0"
 spigot = "1.8.8-R0.1-SNAPSHOT"
-bungeecord = "1.20-R0.3-SNAPSHOT"
+bungeecord = "1.21-R0.4-SNAPSHOT"
 limboloohp = "0.7.9-ALPHA"
 
 # platform extensions
-vault = "1.7.1"
-adventure = "4.17.0"
+adventure = "4.24.0"
 modlauncher = "8.1.3"
-npcLib = "3.0.0-beta6"
-placeholderApi = "2.11.5"
-adventure-serializer-bungee = "4.3.2"
-adventure-platform-bukkit = "4.3.2"
-luckPermsApi = "5.4"
+npcLib = "3.0.0-beta13"
+packetEvents = "2.9.4"
+placeholderApi = "2.11.6"
+adventure-serializer-bungee = "4.4.1"
+adventure-platform-bukkit = "4.4.1"
+luckPermsApi = "5.5"
 
 # fabric platform special dependencies
-minecraft = "1.20.4"
-fabricLoader = "0.15.7"
+minecraft = "1.21.8"
+fabricLoader = "0.17.0"
 
 
 [libraries]
@@ -90,8 +94,9 @@ guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 # console
-jline = { group = "org.jline", name = "jline", version.ref = "jline" }
-jansi = { group = "org.fusesource.jansi", name = "jansi", version.ref = "jansi" }
+jansi = { group = "org.jline", name = "jansi-core", version.ref = "jline" }
+jlineReader = { group = "org.jline", name = "jline-reader", version.ref = "jline" }
+jlineTerminal = { group = "org.jline", name = "jline-terminal-ffm", version.ref = "jline" }
 stringSimilarity = { group = "info.debatty", name = "java-string-similarity", version.ref = "stringSimilarity" }
 
 # night config
@@ -102,6 +107,11 @@ nightConfigJson = { group = "com.electronwill.night-config", name = "json", vers
 # cloud commands
 cloudCore = { group = "com.github.CloudNetService.cloud-command-framework", name = "cloud-core", version.ref = "cloud" }
 cloudAnnotations = { group = "com.github.CloudNetService.cloud-command-framework", name = "cloud-annotations", version.ref = "cloud" }
+cloudConfirmationProcessor = { group = "org.incendo", name = "cloud-processors-confirmation", version.ref = "cloudConfirmation" }
+
+# cloud api to expose in node api
+cloudCoreApi = { group = "org.incendo", name = "cloud-core", version.ref = "cloudApi" }
+cloudAnnotationsApi = { group = "org.incendo", name = "cloud-annotations", version.ref = "cloudApi" }
 
 # junit
 junitApi = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
@@ -128,24 +138,29 @@ dockerJavaHttpclient5 = { group = "com.github.docker-java", name = "docker-java-
 nettyHandler = { group = "io.netty", name = "netty5-handler", version.ref = "netty" }
 nettyNativeEpoll = { group = "io.netty", name = "netty5-transport-native-epoll", version.ref = "netty" }
 nettyNativeKqueue = { group = "io.netty", name = "netty5-transport-native-kqueue", version.ref = "netty" }
+nettyBufferMemorySegment = { group = "io.netty", name = "netty5-buffer-memory-segment", version.ref = "netty" }
+
+# logging
+slf4jApi = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+logbackCore = { group = "ch.qos.logback", name = "logback-core", version.ref = "logback" }
+logbackClassic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
 
 # general
 vavr = { group = "io.vavr", name = "vavr", version.ref = "vavr" }
-asm = { group = "org.ow2.asm", name = "asm-tree", version.ref = "asm" }
 sshj = { group = "com.hierynomus", name = "sshj", version.ref = "sshj" }
 gulf = { group = "dev.derklaro.gulf", name = "gulf", version.ref = "gulf" }
-slf4jNop = { group = "org.slf4j", name = "slf4j-nop", version.ref = "slf4j" }
 awsSdk = { group = "software.amazon.awssdk", name = "s3", version.ref = "awsSdk" }
 oshi = { group = "com.github.oshi", name = "oshi-core-java11", version.ref = "oshi" }
 annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }
 geantyref = { group = "io.leangen.geantyref", name = "geantyref", version.ref = "geantyref" }
-reflexion = { group = "dev.derklaro.reflexion", name = "reflexion", version.ref = "reflexion" }
 caffeine = { group = "com.github.ben-manes.caffeine", name = "caffeine", version.ref = "caffeine" }
+reflexion = { group = "dev.derklaro.reflexion", name = "reflexion-core", version.ref = "reflexion" }
 influxClient = { group = "com.influxdb", name = "influxdb-client-java", version.ref = "influxClient" }
 
 # aerogel
 aerogel = { group = "dev.derklaro.aerogel", name = "aerogel", version.ref = "aerogel" }
 aerogelAuto = { group = "dev.derklaro.aerogel", name = "aerogel-auto", version.ref = "aerogel" }
+aerogelScopedValues = { group = "dev.derklaro.aerogel", name = "aerogel-scoped-value-context-scope", version.ref = "aerogel" }
 
 # databases
 h2 = { group = "com.h2database", name = "h2", version.ref = "h2" }
@@ -159,7 +174,8 @@ nukkitX = { group = "cn.nukkit", name = "nukkit", version.ref = "nukkitX" }
 spigot = { group = "org.spigotmc", name = "spigot-api", version.ref = "spigot" }
 sponge = { group = "org.spongepowered", name = "spongeapi", version.ref = "sponge" }
 bungeecord = { group = "net.md-5", name = "bungeecord-api", version.ref = "bungeecord" }
-minestom = { group = "com.github.Minestom", name = "Minestom", version.ref = "minestom" }
+minestom = { group = "net.minestom", name = "minestom", version.ref = "minestom" }
+minestomExtensions = { group = "dev.hollowcube", name = "minestom-ce-extensions", version.ref = "minestomExtensions" }
 velocity = { group = "com.velocitypowered", name = "velocity-api", version.ref = "velocity" }
 waterdogpe = { group = "dev.waterdog.waterdogpe", name = "waterdog", version.ref = "waterdogpe" }
 limboloohp = { group = "com.loohp", name = "Limbo", version.ref = "limboloohp" }
@@ -173,12 +189,12 @@ adventureMinimessage = { group = "net.kyori", name = "adventure-text-minimessage
 adventureBukkitPlatform = { group = "net.kyori", name = "adventure-platform-bukkit", version.ref = "adventure-platform-bukkit" }
 
 # platform extensions
-vault = { group = "com.github.MilkBowl", name = "VaultAPI", version.ref = "vault" }
 modLauncher = { group = "cpw.mods", name = "modlauncher", version.ref = "modlauncher" }
 bungeecordChat = { group = "net.md-5", name = "bungeecord-chat", version.ref = "bungeecord" }
 placeholderApi = { group = "me.clip", name = "placeholderapi", version.ref = "placeholderApi" }
 
 npcLib = { group = "io.github.juliarn", name = "npc-lib-bukkit", version.ref = "npcLib" }
+packetEvents = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetEvents" }
 npcLibLabymod = { group = "io.github.juliarn", name = "npc-lib-labymod", version.ref = "npcLib" }
 luckPermsApi = { group = "net.luckperms", name = "api", version.ref = "luckPermsApi" }
 
@@ -192,11 +208,14 @@ checkstyleTools = { group = "com.puppycrawl.tools", name = "checkstyle", version
 
 [bundles]
 
-aerogel = ["aerogel", "aerogelAuto"]
+aerogel = ["aerogel", "aerogelScopedValues", "aerogelAuto"]
+aerogelApi = ["aerogel", "aerogelAuto"]
 npcLib = ["npcLib", "npcLibLabymod"]
 unirest = ["unirest", "unirestGson"]
 mysql = ["mysqlConnector", "hikariCp"]
-cloud = ["cloudCore", "cloudAnnotations"]
+jline = ["jlineReader", "jlineTerminal"]
+cloud = ["cloudCore", "cloudAnnotations", "cloudConfirmationProcessor"]
+cloudApi = ["cloudCoreApi", "cloudAnnotationsApi"]
 netty = ["nettyHandler"]
 junit = ["junitApi", "junitParams", "junitEngine"]
 dockerJava = ["dockerJavaApi", "dockerJavaHttpclient5"]
@@ -205,13 +224,13 @@ nightConfig = ["nightConfigToml", "nightConfigYaml", "nightConfigJson"]
 adventure = ["adventureApi", "adventureSerializerGson", "adventureSerializerLegacy"]
 
 proxyPlatform = ["bungeecord", "velocity", "waterdogpe"]
-serverPlatform = ["spigot", "sponge", "nukkitX", "minestom", "limboloohp"]
+serverPlatform = ["spigot", "sponge", "nukkitX", "minestom", "minestomExtensions", "limboloohp"]
 
 
 [plugins]
 
 fabricLoom = { id = "fabric-loom", version.ref = "fabricLoom" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
 juppiter = { id = "eu.cloudnetservice.juppiter", version.ref = "juppiter" }
 nexusPublish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexusPublish" }

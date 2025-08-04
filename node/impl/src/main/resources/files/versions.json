@@ -1,0 +1,782 @@
+{
+  "fileVersion": 3,
+  "environments": [
+    {
+      "name": "MINECRAFT_SERVER",
+      "defaultServiceStartPort": 44955,
+      "defaultProcessArguments": [
+        "nogui"
+      ],
+      "properties": {
+        "isJavaServer": true
+      }
+    },
+    {
+      "name": "LIMBO_LOOHP",
+      "defaultServiceStartPort": 44955,
+      "defaultProcessArguments": [
+        "nogui"
+      ],
+      "properties": {
+        "isJavaServer": true
+      }
+    },
+    {
+      "name": "MODDED_MINECRAFT_SERVER",
+      "defaultServiceStartPort": 44955,
+      "defaultProcessArguments": [
+        "nogui"
+      ],
+      "properties": {
+        "isJavaServer": true,
+        "pluginDir": "mods"
+      }
+    },
+    {
+      "name": "MINESTOM",
+      "defaultServiceStartPort": 44955,
+      "defaultProcessArguments": [],
+      "properties": {
+        "isJavaServer": true,
+        "pluginDir": "extensions"
+      }
+    },
+    {
+      "name": "NUKKIT",
+      "defaultServiceStartPort": 44955,
+      "defaultProcessArguments": [
+        "disable-ansi"
+      ],
+      "properties": {
+        "isPeServer": true
+      }
+    },
+    {
+      "name": "BUNGEECORD",
+      "defaultServiceStartPort": 25565,
+      "defaultProcessArguments": [],
+      "properties": {
+        "isJavaProxy": true
+      }
+    },
+    {
+      "name": "VELOCITY",
+      "defaultServiceStartPort": 25565,
+      "defaultProcessArguments": [],
+      "properties": {
+        "isJavaProxy": true
+      }
+    },
+    {
+      "name": "WATERDOG_PE",
+      "defaultServiceStartPort": 19132,
+      "defaultProcessArguments": [],
+      "properties": {
+        "isPeProxy": true
+      }
+    }
+  ],
+  "versions": [
+    {
+      "name": "paper",
+      "environmentType": "MINECRAFT_SERVER",
+      "installSteps": [
+        "PAPER_API",
+        "DOWNLOAD",
+        "BUILD",
+        "COPY_FILTER"
+      ],
+      "website": "https://papermc.io",
+      "versions": [
+        {
+          "name": "1.21.8",
+          "cacheFiles": false,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "paper\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.21.8"
+          }
+        },
+        {
+          "name": "1.21.6",
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "paper\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.21.6"
+          }
+        },
+        {
+          "name": "1.21.5",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "paper\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.21.5"
+          }
+        },
+        {
+          "name": "1.21.4",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "paper\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.21.4"
+          }
+        },
+        {
+          "name": "1.20.6",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "paper\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.20.6"
+          }
+        },
+        {
+          "name": "1.19.4",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "paper\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.19.4"
+          }
+        },
+        {
+          "name": "1.18.2",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "paper\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.18.2"
+          }
+        },
+        {
+          "name": "1.17.1",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.17.1"
+          }
+        },
+        {
+          "name": "1.16.5",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.16.5"
+          }
+        },
+        {
+          "name": "1.15.2",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.15.2"
+          }
+        },
+        {
+          "name": "1.14.4",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.14.4"
+          }
+        },
+        {
+          "name": "1.13.2",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.13.2"
+          }
+        },
+        {
+          "name": "1.12.2",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.12.2"
+          }
+        },
+        {
+          "name": "1.11.2",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.11.2"
+          }
+        },
+        {
+          "name": "1.10.2",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "filteredFiles": [
+              "org/apache/logging/log4j/core/lookup/JndiLookup.class"
+            ],
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.10.2"
+          }
+        },
+        {
+          "name": "1.9.4",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.9.4"
+          }
+        },
+        {
+          "name": "1.8.8",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "paper.jar"
+            },
+            "fetchOverPaperApi": true,
+            "versionGroup": "1.8.8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "purpur",
+      "environmentType": "MINECRAFT_SERVER",
+      "website": "https://purpurmc.org/",
+      "installSteps": [
+        "DOWNLOAD",
+        "BUILD",
+        "COPY_FILTER"
+      ],
+      "versions": [
+        {
+          "name": "1.21.8",
+          "url": "https://api.purpurmc.org/v2/purpur/1.21.8/latest/download",
+          "cacheFiles": false,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "purpur\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ]
+          }
+        },
+        {
+          "name": "1.21.6",
+          "url": "https://api.purpurmc.org/v2/purpur/1.21.6/latest/download",
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "purpur\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ]
+          }
+        },
+        {
+          "name": "1.21.5",
+          "url": "https://api.purpurmc.org/v2/purpur/1.21.5/latest/download",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "purpur\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ]
+          }
+        },
+        {
+          "name": "1.20.6",
+          "url": "https://api.purpurmc.org/v2/purpur/1.20.6/latest/download",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "purpur\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ]
+          }
+        },
+        {
+          "name": "1.19.4",
+          "url": "https://api.purpurmc.org/v2/purpur/1.19.4/latest/download",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "purpur\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ]
+          }
+        },
+        {
+          "name": "1.18.2",
+          "url": "https://api.purpurmc.org/v2/purpur/1.18.2/latest/download",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/.*": "/",
+              "versions/.*": "/",
+              "purpur\\.jar": "paper.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ]
+          }
+        },
+        {
+          "name": "1.17.1",
+          "url": "https://api.purpurmc.org/v2/purpur/1.17.1/latest/download",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "cache/patched.*\\.jar": "purpur.jar"
+            },
+            "jvmOptions": [
+              "-Dpaperclip.patchonly=true"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "spigot",
+      "environmentType": "MINECRAFT_SERVER",
+      "website": "https://spigotmc.org/",
+      "installSteps": [
+        "DOWNLOAD"
+      ],
+      "versions": [
+        {
+          "name": "1.21.8",
+          "url": "https://s3.mcjars.app/spigot/1.21.8/4524/server.jar"
+        },
+        {
+          "name": "1.21.6",
+          "url": "https://s3.mcjars.app/spigot/1.21.6/4518/server.jar"
+        },
+        {
+          "name": "1.21.5",
+          "url": "https://s3.mcjars.app/spigot/1.21.5/4504/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.20.6",
+          "url": "https://s3.mcjars.app/spigot/1.20.6/4135/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.19.4",
+          "url": "https://s3.mcjars.app/spigot/1.19.4/3763/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.18.2",
+          "url": "https://s3.mcjars.app/spigot/1.18.2/3498/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.17.1",
+          "url": "https://s3.mcjars.app/spigot/1.17.1/3284/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.16.5",
+          "url": "https://s3.mcjars.app/spigot/1.16.5/3096/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.15.2",
+          "url": "https://s3.mcjars.app/spigot/1.15.2/2703/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.14.4",
+          "url": "https://s3.mcjars.app/spigot/1.14.4/2502/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.13.2",
+          "url": "https://s3.mcjars.app/spigot/1.13.2/2148/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.12.2",
+          "url": "https://s3.mcjars.app/spigot/1.12.2/1573/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.11.2",
+          "url": "https://s3.mcjars.app/spigot/1.11.2/1251/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.10.2",
+          "url": "https://s3.mcjars.app/spigot/1.10.2/986/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.9.4",
+          "url": "https://s3.mcjars.app/spigot/1.9.4/849/server.jar",
+          "deprecated": true
+        },
+        {
+          "name": "1.8.8",
+          "url": "https://s3.mcjars.app/spigot/1.8.8/582/server.jar",
+          "deprecated": true
+        }
+      ]
+    },
+    {
+      "name": "fabric",
+      "environmentType": "MODDED_MINECRAFT_SERVER",
+      "installSteps": [
+        "FABRIC_API",
+        "DOWNLOAD",
+        "BUILD",
+        "COPY_FILTER"
+      ],
+      "website": "https://fabricmc.net",
+      "versions": [
+        {
+          "name": "1.21.8",
+          "cacheFiles": false,
+          "properties": {
+            "copy": {
+              "fabric-server-launch\\.jar": "fabric.jar",
+              "libraries/.*": "/",
+              "versions/.*": "/",
+              "server\\.jar": "server.jar"
+            },
+            "parameters": [
+              "server",
+              "-mcversion",
+              "%version%",
+              "-downloadMinecraft"
+            ],
+            "fetchOverFabricApi": true
+          },
+          "minJavaVersion": 21
+        },
+        {
+          "name": "1.21.6",
+          "properties": {
+            "copy": {
+              "fabric-server-launch\\.jar": "fabric.jar",
+              "libraries/.*": "/",
+              "versions/.*": "/",
+              "server\\.jar": "server.jar"
+            },
+            "parameters": [
+              "server",
+              "-mcversion",
+              "%version%",
+              "-downloadMinecraft"
+            ],
+            "fetchOverFabricApi": true
+          },
+          "minJavaVersion": 21
+        }
+      ]
+    },
+    {
+      "name": "spongevanilla",
+      "environmentType": "MINECRAFT_SERVER",
+      "website": "https://spongepowered.org",
+      "installSteps": [
+        "SPONGE_API",
+        "DOWNLOAD",
+        "BUILD",
+        "COPY_FILTER"
+      ],
+      "versions": [
+        {
+          "name": "1.21.5",
+          "cacheFiles": false,
+          "properties": {
+            "copy": {
+              "libraries/.*": "/",
+              "launcher\\.conf": "/",
+              "spongevanilla\\.jar": "/"
+            },
+            "fetchOverSpongeApi": true,
+            "artifact": "spongevanilla",
+            "mcVersion": "1.21.5"
+          },
+          "minJavaVersion": 21
+        },
+        {
+          "name": "1.20.6",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "libraries/.*": "/",
+              "launcher\\.conf": "/",
+              "spongevanilla\\.jar": "/"
+            },
+            "fetchOverSpongeApi": true,
+            "artifact": "spongevanilla",
+            "mcVersion": "1.20.6"
+          },
+          "minJavaVersion": 21
+        },
+        {
+          "name": "1.19.4",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "libraries/.*": "/",
+              "launcher\\.conf": "/",
+              "spongevanilla\\.jar": "/"
+            },
+            "fetchOverSpongeApi": true,
+            "artifact": "spongevanilla",
+            "mcVersion": "1.19.4"
+          }
+        },
+        {
+          "name": "1.18.2",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "libraries/.*": "/",
+              "launcher\\.conf": "/",
+              "spongevanilla\\.jar": "/"
+            },
+            "fetchOverSpongeApi": true,
+            "artifact": "spongevanilla",
+            "mcVersion": "1.18.2",
+            "deprecated": true
+          }
+        },
+        {
+          "name": "1.16.5",
+          "deprecated": true,
+          "properties": {
+            "copy": {
+              "libraries/.*": "/",
+              "launcher\\.conf": "/",
+              "spongevanilla\\.jar": "/"
+            },
+            "fetchOverSpongeApi": true,
+            "artifact": "spongevanilla",
+            "mcVersion": "1.16.5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "waterdogpe",
+      "environmentType": "WATERDOG_PE",
+      "website": "https://waterdog.dev",
+      "installSteps": [
+        "DOWNLOAD"
+      ],
+      "versions": [
+        {
+          "name": "latest",
+          "url": "https://jenkins.waterdog.dev/job/Waterdog/job/WaterdogPE/job/master/lastSuccessfulBuild/artifact/target/Waterdog.jar",
+          "cacheFiles": false,
+          "deprecated": true
+        }
+      ]
+    },
+    {
+      "name": "bungeecord",
+      "environmentType": "BUNGEECORD",
+      "website": "https://spigotmc.org/go/bungeecord",
+      "installSteps": [
+        "DOWNLOAD"
+      ],
+      "versions": [
+        {
+          "name": "latest",
+          "url": "https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar",
+          "cacheFiles": false
+        }
+      ]
+    },
+    {
+      "name": "velocity",
+      "environmentType": "VELOCITY",
+      "website": "https://docs.papermc.io/velocity",
+      "installSteps": [
+        "PAPER_API",
+        "DOWNLOAD"
+      ],
+      "versions": [
+        {
+          "name": "latest",
+          "cacheFiles": false,
+          "properties": {
+            "fetchOverPaperApi": true,
+            "versionGroup": "3.4.0-SNAPSHOT"
+          }
+        }
+      ]
+    },
+    {
+      "name": "nukkit",
+      "environmentType": "NUKKIT",
+      "website": "https://nukkitx.com",
+      "installSteps": [
+        "DOWNLOAD"
+      ],
+      "versions": [
+        {
+          "name": "latest",
+          "url": "https://repo.opencollab.dev/api/maven/latest/file/maven-snapshots/cn/nukkit/nukkit/1.0-SNAPSHOT?extension=jar",
+          "cacheFiles": false
+        }
+      ]
+    },
+    {
+      "name": "limboloohp",
+      "environmentType": "LIMBO_LOOHP",
+      "website": "https://github.com/LOOHP/Limbo",
+      "installSteps": [
+        "DOWNLOAD"
+      ],
+      "versions": [
+        {
+          "name": "1.21.8",
+          "url": "https://s3.mcjars.app/loohp-limbo/1.21.8/58/server.jar"
+        },
+        {
+          "name": "1.21.6",
+          "url": "https://s3.mcjars.app/loohp-limbo/1.21.6/54/server.jar"
+        },
+        {
+          "name": "1.21.5",
+          "url": "https://s3.mcjars.app/loohp-limbo/1.21.5/52/server.jar"
+        },
+        {
+          "name": "1.21.4",
+          "url": "https://s3.mcjars.app/loohp-limbo/1.21.4/51/server.jar"
+        },
+        {
+          "name": "1.21.3",
+          "url": "https://s3.mcjars.app/loohp-limbo/1.21.3/47/server.jar"
+        },
+        {
+          "name": "1.21.1",
+          "url": "https://s3.mcjars.app/loohp-limbo/1.21.1/46/server.jar"
+        },
+        {
+          "name": "1.20.6",
+          "url": "https://s3.mcjars.app/loohp-limbo/1.20.6/43/server.jar"
+        }
+      ]
+    }
+  ]
+}

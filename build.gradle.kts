@@ -32,17 +32,14 @@ allprojects {
 
   repositories {
     releasesOnly(mavenCentral())
-
-    // old and new sonatype snapshot repository
-    snapshotsOnly(maven("https://oss.sonatype.org/content/repositories/snapshots/"))
-    snapshotsOnly(maven("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-
-    // must be after sonatype as sponge mirrors sonatype which leads to outdated dependencies
-    maven("https://repo.spongepowered.org/maven/")
+    snapshotsOnly(maven("https://central.sonatype.com/repository/maven-snapshots/"))
 
     // ensure that we use these repositories for snapshots/releases only (improves lookup times)
     releasesOnly(maven("https://repository.derklaro.dev/releases/"))
     snapshotsOnly(maven("https://repository.derklaro.dev/snapshots/"))
+
+    // must be after sonatype as sponge mirrors sonatype which leads to outdated dependencies
+    maven("https://repo.spongepowered.org/maven/")
   }
 }
 
@@ -96,18 +93,33 @@ subprojects {
     testLogging {
       events("started", "passed", "skipped", "failed")
     }
+
+    // allow dynamic agent loading for mockito
+    jvmArgs(
+      "--enable-preview",
+      "-XX:+EnableDynamicAgentLoading",
+      "--enable-native-access=ALL-UNNAMED",
+      "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED"
+    )
+
     // always pass down all given system properties
     systemProperties(System.getProperties().mapKeys { it.key.toString() })
+    systemProperty("io.netty5.noUnsafe", "true")
   }
 
   tasks.withType<JavaCompile>().configureEach {
-    sourceCompatibility = JavaVersion.VERSION_17.toString()
-    targetCompatibility = JavaVersion.VERSION_17.toString()
-    // options
+    val javaVersion = if (project.path.contains("api") || project.path == ":ext:adventure-helper") JavaVersion.VERSION_17 else JavaVersion.VERSION_24
+    sourceCompatibility = javaVersion.toString()
+    targetCompatibility = javaVersion.toString()
+
     options.encoding = "UTF-8"
     options.isIncremental = true
-    // we are aware that those are there, but we only do that if there is no other way we can use - so please keep the terminal clean!
-    options.compilerArgs = mutableListOf("-Xlint:-deprecation,-unchecked")
+
+    if (project.path != ":launcher:java8" && project.path != ":launcher:patcher" && !project.path.contains("api") && project.path != ":ext:adventure-helper") {
+      options.compilerArgs.add("--enable-preview")
+      options.compilerArgs.add("-Xlint:-deprecation,-unchecked,-preview")
+      options.compilerArgs.add("-proc:full")
+    }
   }
 
   tasks.withType<Checkstyle> {
@@ -166,11 +178,11 @@ tasks.register("globalJavaDoc", Javadoc::class) {
 nexusPublishing {
   repositories {
     sonatype {
-      nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-      snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+      nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+      snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
 
-      username.set(System.getenv("SONATYPE_USER"))
-      password.set(System.getenv("SONATYPE_TOKEN"))
+      username.set(System.getenv("CENTRAL_USER"))
+      password.set(System.getenv("CENTRAL_PASSWORD"))
     }
   }
 

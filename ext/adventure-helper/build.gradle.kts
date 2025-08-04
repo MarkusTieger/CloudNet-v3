@@ -15,7 +15,7 @@
  */
 
 dependencies {
-  "compileOnly"(projects.driver)
+  "compileOnly"(projects.driver.driverApi)
   "compileOnly"(libs.adventureApi)
   "compileOnly"(libs.adventureSerializerLegacy)
   "compileOnly"(libs.bungeecordChat)
